@@ -2,8 +2,11 @@ import React from 'react';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import axios from "axios";
+import {useNavigate} from 'react-router-dom';
 
 function CreatePost() {
+
+    let navigate = useNavigate();
 
     const initialValues = {
         title:"",
@@ -15,13 +18,15 @@ function CreatePost() {
         title: Yup.string().required("Le titre ne doit pas être vide"),
         postText: Yup.string().required(),
         username: Yup.string().min(3).max(20).required(),
-    })
+    });
 
     const onSubmit = (data) => {
         axios.post("http://localhost:4000/posts", data).then((res) => {
-            console.log("le post à été créé !!!!");
+            navigate("/");
         });
-    }
+    };
+
+    
   return (
     <div className='createPostPage'> 
         <Formik 

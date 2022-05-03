@@ -1,3 +1,7 @@
+/***************************************************/
+/****** Définition du modèle pour les posts *******/
+
+
 module.exports = (sequelize, DataTypes) => {
     const Posts = sequelize.define("Posts", {
       title: {
@@ -14,5 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       },
     });
   
+    Posts.associate = (models) => {// Mise en place des relations
+      Posts.hasMany(models.Comments, {
+        onDelete: "cascade",
+      });
+    };
+
     return Posts;
   };
