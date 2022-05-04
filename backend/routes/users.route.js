@@ -5,6 +5,7 @@ const { Users } = require("../models");
 const bcrypt = require('bcrypt');
 const {sign} = require ('jsonwebtoken');
 const { username } = require("../config/db.config");
+const {validateToken} = require('../middlewares/auth.middleware')
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -47,6 +48,10 @@ router.post('/login', async (req, res) => {
     else{
         res.json({ error: "L'utilisateur n'existe pas"})
     }
+});
+
+router.get('/auth', validateToken, (req, res) => {
+    res.json(req.user)
 });
 
 module.exports = router;
