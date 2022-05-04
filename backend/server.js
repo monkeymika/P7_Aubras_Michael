@@ -19,11 +19,13 @@ app.use(express.json());
 /***** Import des modules de routage *******/
 const postRouter = require("./routes/posts.route");
 const commentsRouter = require("./routes/comments.route");
+const usersRouter = require("./routes/users.route");
 
 /**************************************/
 /***** Mise en place du routage *******/
 app.use("/posts", postRouter);
 app.use("/comments", commentsRouter);
+app.use("/auth", usersRouter);
 
 /****************************************/
 /***** Start serveur *******/
