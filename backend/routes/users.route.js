@@ -3,6 +3,8 @@
 const express = require("express");
 const { Users } = require("../models");
 const bcrypt = require('bcrypt');
+const {sign} = require ('jsonwebtoken');
+const { username } = require("../config/db.config");
 
 /*****************************************************/
 /******** Récupération du routeur d'express *********/
@@ -31,9 +33,15 @@ router.post('/login', async (req, res) => {
     
     if ( mail)
     bcrypt.compare(password, mail.password).then((match) => {
-      if (!match)
-        res.json({ error: 'Wrong Username and Password combination' });
-      else res.json('You logged in!!!');
+        if (!match)
+            res.json({ error: 'Wrong Username and Password combination' });
+        else {
+            const accessToken = sign
+            ({email: mail.email, id: mail.id }, 
+                "secret"
+            );
+            res.json(accessToken); 
+        }
     });
     else{
         res.json({ error: "User doesn't exist"})

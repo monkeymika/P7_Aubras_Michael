@@ -21,10 +21,18 @@ function Post() {
     },[]);
 
     const addComment = () => {
-        axios.post("http://localhost:4000/comments", {commentBody: newComment , PostId: id}).then((res) => {
-            const commentToAdd = {commentBody: newComment};
-            setComments([...comments, commentToAdd ]);
-            setNewComment("");
+        axios
+            .post("http://localhost:4000/comments", 
+            {commentBody: newComment , PostId: id}, 
+            {headers: {accessToken: sessionStorage.getItem("accessToken")}} )
+            .then((res) => {
+            if (res.data.error) {
+                console.log(res.data.error)
+            } else {
+                const commentToAdd = {commentBody: newComment};
+                setComments([...comments, commentToAdd ]);
+                setNewComment("");
+            }
         })
     };
 

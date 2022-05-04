@@ -2,6 +2,7 @@
 /******** Import des modules *********/
 const express = require("express");
 const { Comments } = require("../models");
+const {validateToken} = require("../middlewares/auth.middleware")
 
 /*****************************************************/
 /******** Récupération du routeur d'express *********/
@@ -15,7 +16,7 @@ router.get("/:postId", async (req, res) => {
     res.json(comments);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", validateToken, async (req, res) => {
     const comment = req.body;
     await Comments.create(comment);
     res.json(comment);

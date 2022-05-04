@@ -1,17 +1,25 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 function Login() {
     
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    let navigate = useNavigate();
+
     const login = () => {
         const data = {email: email, password: password };
         axios.post("http://localhost:4000/auth/login", data ).then((res) => {
-            console.log(res.data);
-        })
-    }
+            if (res.data.error) { 
+                alert(res.data.error);
+            } else {
+                sessionStorage.setItem("accessToken", res.data );
+                navigate("/");
+            }
+        });
+    };
   
     return (
         <div className="loginContainer">
