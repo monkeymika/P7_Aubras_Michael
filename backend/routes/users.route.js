@@ -5,6 +5,8 @@ const { Users } = require("../models");
 const bcrypt = require('bcrypt');
 const {sign} = require ('jsonwebtoken');
 const { username } = require("../config/db.config");
+const dotenv = require('dotenv');
+dotenv.config();
 
 /*****************************************************/
 /******** Récupération du routeur d'express *********/
@@ -26,25 +28,24 @@ router.post("/", async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    const {email, password} = req.body;
+    const {username, password} = req.body;
 
+    const user = await Users.findOne({where: {username : username}});
     
-    const mail = await Users.findOne({where: {email : email}});
-    
-    if ( mail)
-    bcrypt.compare(password, mail.password).then((match) => {
+    if ( user )
+    bcrypt.compare(password, user.password).then((match) => {
         if (!match)
-            res.json({ error: 'Wrong Username and Password combination' });
+            res.json({ error: 'combinaison utilisateur et password incorrect' });
         else {
             const accessToken = sign
-            ({email: mail.email, id: mail.id }, 
-                "secret"
+            ({username: user.username, id: user.id }, 
+                process.env.JWT_KEY
             );
             res.json(accessToken); 
         }
     });
     else{
-        res.json({ error: "User doesn't exist"})
+        res.json({ error: "L'utilisateur n'existe pas"})
     }
 });
 

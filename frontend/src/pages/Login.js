@@ -4,13 +4,13 @@ import {useNavigate} from 'react-router-dom';
 
 function Login() {
     
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     let navigate = useNavigate();
 
     const login = () => {
-        const data = {email: email, password: password };
+        const data = {username: username, password: password };
         axios.post("http://localhost:4000/auth/login", data ).then((res) => {
             if (res.data.error) { 
                 alert(res.data.error);
@@ -26,7 +26,7 @@ function Login() {
                 <input 
                     type="text" 
                     onChange={(event) => {
-                        setEmail(event.target.value);
+                        setUsername(event.target.value);
                     }}
                 />
 
