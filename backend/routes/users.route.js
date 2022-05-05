@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
             ({username: user.username, id: user.id }, 
                 process.env.JWT_KEY
             );
-            res.json(accessToken); 
+            res.json({token:accessToken, username:username, id:user.id}); 
         }
     });
     else{

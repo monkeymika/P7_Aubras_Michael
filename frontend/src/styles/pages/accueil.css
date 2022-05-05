@@ -49,6 +49,20 @@
     border-radius: 0 0 10px 10px;
 }
 
+.comment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comment button {
+    background: #ff7b77;
+    width: 50px;
+    cursor: pointer;
+
+}
+
+
 /***********************************************************/
 /********************* NAVBAR *****************************/
 
@@ -59,6 +73,13 @@
     display: flex;
     align-items: center;
     font-size: 1.4rem;
+}
+
+.navbar button {
+    width: 110px;
+    height: 30px;
+    cursor: pointer;
+    margin-left: 50px;
 }
 
 .navbar a {

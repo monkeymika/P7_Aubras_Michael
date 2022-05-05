@@ -11,20 +11,35 @@ import axios from "axios";
 
 
 function App() {
-  const [authState, setAuthState] = useState(false);
+  const [authState, setAuthState] = useState({
+    username: "", 
+    id: 0, 
+    status: false
+  });
 
-  useEffect(() => {
-    
-      axios.get("http://localhost:4000/auth/auth", {headers: {
-        accessToken: localStorage.getItem('accessToken')
-      }}).then((res) => {
-        if (res.data.err) { setAuthState(false)
-        }else {
-          setAuthState(true);
-        }
-      })
-    
+  useEffect(() => {  
+    axios
+    .get("http://localhost:4000/auth/auth", {
+      headers: {
+      accessToken: localStorage.getItem('accessToken'),
+    }
+    })
+    .then((res) => {
+      if (res.data.error) { setAuthState({...authState, status: false });
+      }else {
+          setAuthState({ 
+          username: res.data.username, 
+          id: res.data.id, 
+          status: true
+        });
+      }
+    })
   }, []);
+
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    setAuthState({username: "", id: 0, status: false});
+  }
 
 
   return (
@@ -33,15 +48,20 @@ function App() {
         <Router>
           <div className="navbar">
             <Link to="/"> Accueil </Link>
-            <Link to="/createpost"> Create a post </Link>
+            <Link to="/createpost"> Créer un post </Link>
             {/* Si "accessToken n'est pas dans le session storage,
             "signup" et "login" n'apparaissent pas sur la page d'accueil*/}
-            {!authState && (
+            {!authState.status ? (
               <>
                 <Link to="/login"> Login </Link>
                 <Link to="/registration"> Signup </Link>
               </>
+            ) : (
+              <button onClick={logout}> Se déconnecter</button>
             )}
+
+
+           <p>{authState.username}</p>
           </div>
           <Routes>
             <Route path="/" element={<Accueil/>} />

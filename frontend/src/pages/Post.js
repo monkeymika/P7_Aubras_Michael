@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
+import {AuthContext} from "../helpers/AuthContext";
 
 // on passe l'id du post dans la base de données 
 function Post() {
@@ -8,6 +9,7 @@ function Post() {
     const [postObject, setPostObject] = useState({});
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment]  = useState("");
+    const {authState} = useContext(AuthContext)
 
     //Requete axios pour l'id
     useEffect(() => {
@@ -33,6 +35,16 @@ function Post() {
                 setComments([...comments, commentToAdd ]);
                 setNewComment("");
             }
+        })
+    };
+    // fonction qui supprime les commentaires
+    const deleteComment = (id) => {
+        axios.delete(`http://localhost:4000/comments/${id}`, {
+            headers: {accessToken: localStorage.getItem('accessToken')}
+        }).then(() => {
+            setComments(comments.filter((value) => {
+                return value.id !== id;
+            }))
         })
     };
 
@@ -61,7 +73,10 @@ function Post() {
                         return (
                             <div key={key} className="comment"> 
                                 {comment.commentBody}
-                                <label> Username: {comment.username}</label> 
+                                <label> Username: {comment.username}</label>
+                                {authState.username === comment.username && (
+                                    <button onClick={() => {deleteComment(comment.id)}}> X </button>
+                                )} 
                             </div>
                         );
                     })}
