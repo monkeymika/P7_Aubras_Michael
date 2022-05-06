@@ -9,7 +9,7 @@ function Post() {
     const [postObject, setPostObject] = useState({});
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment]  = useState("");
-    const {authState} = useContext(AuthContext)
+    const {authState} = useContext(AuthContext);
 
     //Requete axios pour l'id
     useEffect(() => {

@@ -1,10 +1,14 @@
 .App {
-    width: 100vw;
+    width: 100%;
     height: auto;
     display: flex;
     align-items: center;
-    padding-top: 40px;
     flex-direction: column;
+}
+
+body {
+    margin: 0;
+    padding: 0;
 }
 
 .post {
@@ -13,23 +17,25 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 1px;
     margin-top: 50px;
-    color: white;
+    border: 1px solid lightgray;
+    font-family: Arial, Helvetica, sans-serif;
+
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .post:hover {
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     cursor: pointer;
-    transform: scale(1.02);
 }
 
 .post .title {
     flex: 20%;
+    border-bottom: 1px solid lightgray;
     background-color: #ff7b77;
     display: grid;
     place-content: center;
+    color: white;
     border-radius: 10px 10px 0 0;
 }
 
@@ -37,31 +43,43 @@
     flex: 60%;
     display: grid;
     place-content: center;
-    background-color: #ff7b77;
 }
 
 .post .footer {
     flex: 20%;
+    border-top: 1px solid lightgray;
     display: flex;
     align-items: center;
     padding-left: 15px;
     background-color: #ff7b77;
-    border-radius: 0 0 10px 10px;
+    color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
-.comment {
+.footer .username {
+    flex: 50%;
+}
+
+.footer .buttons {
+    flex: 50%;
     display: flex;
-    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
 }
 
-.comment button {
-    background: #ff7b77;
-    width: 50px;
-    cursor: pointer;
-
+.likeBttn {
+    color: rgba(68, 68, 68, 0.8);
 }
 
+.unlikeBttn {
+    color: white;
+}
+
+.buttons label {
+    margin-right: 20px;
+    margin-left: 10px;
+}
 
 /***********************************************************/
 /********************* NAVBAR *****************************/

@@ -1,7 +1,9 @@
 /**************************************/
 /******** Import des modules *********/
 const express = require("express");
-const { Posts } = require("../models");
+const { Posts, Likes } = require("../models");
+
+const {validateToken} = require("../middlewares/auth.middleware");
 
 /*****************************************************/
 /******** Récupération du routeur d'express *********/
@@ -10,9 +12,10 @@ const router = express.Router();
 /*****************************************/
 /******** Routage pour les posts ********/
 
-router.get("/", async (req, res) => {
-  const listOfPosts = await Posts.findAll();
-  res.json(listOfPosts);
+router.get("/", validateToken, async (req, res) => {
+  const listOfPosts = await Posts.findAll({include: [Likes]});
+  const likedPosts = await Likes.findAll({where: {UserId: req.user.id}})
+  res.json({listOfPosts : listOfPosts, likedPosts: likedPosts });
 });
 
 router.get('/byId/:id', async (req, res) => {
