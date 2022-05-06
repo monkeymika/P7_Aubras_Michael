@@ -86,28 +86,44 @@ body {
 
 .navbar {
     width: 100%;
-    height: 60px;
-    background-color: #fa463f;
+    height: 70px;
+    background: #ff7b77;
     display: flex;
     align-items: center;
-    font-size: 1.4rem;
 }
 
-.navbar button {
-    width: 110px;
-    height: 30px;
-    cursor: pointer;
-    margin-left: 50px;
+.navbar .links {
+    flex: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .loggedInContainer {
+    flex: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .navbar a {
-    margin-left: 45px;
-    align-items: center;
+    margin-left: 20px;
     text-decoration: none;
     color: white;
 }
 
-.navbar a:hover {
-    transform: scale(1.2);
-    transition: 0.3s;
+.navbar button {
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    margin-right: 10px;
+    background-color: white;
+}
+
+.navbar h1 {
+    text-align: right;
+    margin-right: 10px;
+    color: white;
+    font-weight: lighter;
 }

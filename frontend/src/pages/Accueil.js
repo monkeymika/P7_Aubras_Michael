@@ -14,7 +14,7 @@ function Accueil() {
 
   useEffect(() => {
     //si la personne n'est pas inscrite, retour à login
-    if (!authState.status) {
+    if (!localStorage.getItem("accessToken")) {
       navigate('/login');
     } else {
 

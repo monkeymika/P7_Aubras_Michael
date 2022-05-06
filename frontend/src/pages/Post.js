@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import {AuthContext} from "../helpers/AuthContext";
 
@@ -10,6 +10,8 @@ function Post() {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment]  = useState("");
     const {authState} = useContext(AuthContext);
+
+    let navigate = useNavigate();
 
     //Requete axios pour l'id
     useEffect(() => {
@@ -22,6 +24,7 @@ function Post() {
         });
     },[]);
 
+    // fonction qui ajoute un commentaire
     const addComment = () => {
         axios
             .post("http://localhost:4000/comments", 
@@ -37,6 +40,7 @@ function Post() {
             }
         })
     };
+
     // fonction qui supprime les commentaires
     const deleteComment = (id) => {
         axios.delete(`http://localhost:4000/comments/${id}`, {
@@ -48,13 +52,25 @@ function Post() {
         })
     };
 
+    // fonction qui supprime le post
+    const deletePost = (id) => {
+        axios
+        .delete(`http://localhost:4000/posts/${id}`, 
+            {headers: {accessToken: localStorage.getItem("accessToken")}
+        })
+        .then(() => {
+            navigate('/');
+        })
+    }
     return  (
         <div className='postPage'>
             <div className="leftSide">
                 <div className="post" id='individual'>
                     <div className="title"> {postObject.title}</div>
                     <div className="postText"> {postObject.postText}</div>
-                    <div className="footer"> {postObject.username}</div>
+                    <div className="footer"> {postObject.username} 
+                        {authState.username === postObject.username && <button onClick={() => {deletePost(postObject.id)}}> Effacer publication </button>}
+                    </div>
                 </div>
             </div>
             <div className="rightSide">

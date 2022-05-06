@@ -49,21 +49,26 @@ function App() {
       <AuthContext.Provider value={{authState, setAuthState }}>
         <Router>
           <div className="navbar">
-            <Link to="/"> Accueil </Link>
-            <Link to="/createpost"> Créer un post </Link>
-            {/* Si "accessToken n'est pas dans le session storage,
-            "signup" et "login" n'apparaissent pas sur la page d'accueil*/}
-            {!authState.status ? (
-              <>
-                <Link to="/login"> Login </Link>
-                <Link to="/registration"> Signup </Link>
-              </>
-            ) : (
-              <button onClick={logout}> Se déconnecter</button>
-            )}
+            <div className="links">
+              {/* Si "accessToken n'est pas dans le session storage,
+              "signup" et "login" n'apparaissent pas sur la page d'accueil*/}
+              {!authState.status ? (
+                <>
+                  <Link to="/login"> Login </Link>
+                  <Link to="/registration"> Signup </Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/"> Accueil </Link>
+                  <Link to="/createpost"> Créer un post </Link>
+                </>
+              )}
 
-
-           <p>{authState.username}</p>
+            </div>
+            <div className="loggedInContainer">
+              <h1>{authState.username}</h1>
+              {authState.status && <button onClick={logout}> Se déconnecter</button>}
+            </div>
           </div>
           
           <Routes>

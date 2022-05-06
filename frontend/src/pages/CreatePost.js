@@ -13,11 +13,10 @@ function CreatePost() {
     const initialValues = {
         title:"",
         postText:"",
-        username:""
     };
-
+    /*Si non connecté l'utilisateur ne peux pas créer de post, et redirection vers login*/ 
     useEffect(() => {
-        if(!authState.status) {
+        if(!localStorage.getItem("accessToken")) {
             navigate("/login");
         }
     }, []);
@@ -25,11 +24,10 @@ function CreatePost() {
     const validationSchema = Yup.object().shape({
         title: Yup.string().required("Le titre ne doit pas être vide"),
         postText: Yup.string().required(),
-        username: Yup.string().min(3).max(20).required(),
     });
 
     const onSubmit = (data) => {
-        axios.post("http://localhost:4000/posts", data).then((res) => {
+        axios.post("http://localhost:4000/posts", data, {headers: {accessToken: localStorage.getItem('accessToken')}}).then((res) => {
             navigate("/");
         });
     };
@@ -58,15 +56,6 @@ function CreatePost() {
                     name="postText" 
                     placeholder="(Ex. Post..." >       
                 </Field>
-
-                <label>Username</label>
-                <ErrorMessage name='username' component="span"/>
-                <Field 
-                    id="inputCreatePost" 
-                    name="username" 
-                    placeholder="(Ex. Bobby..." >       
-                </Field>
-
                 <button type='submit'> Create Post</button>
             </Form>
         </Formik> 
