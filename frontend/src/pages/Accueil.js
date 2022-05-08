@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import {useNavigate} from 'react-router-dom';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import {AuthContext} from "../helpers/AuthContext";
+import {Link} from 'react-router-dom';
 
 function Accueil() {
   const [listOfPosts, setListOfPosts] = useState([]);
@@ -76,7 +77,7 @@ function Accueil() {
             <div className='title'> {value.title} </div>
             <div className='postText' onClick={() => {navigate(`/post/${value.id}`)}}> {value.postText} </div>
             <div className="footer">
-              <div className="username">{value.username}</div>
+              <div className="username"><Link to={`/profile/${value.UserId}`}> {value.username} </Link></div>
               <div className="buttons">
                 <ThumbUpIcon
                   onClick={() => {
