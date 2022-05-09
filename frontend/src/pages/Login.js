@@ -26,22 +26,22 @@ function Login() {
   
     return (
         <div className="loginContainer">
-                <input 
-                    type="text" 
-                    onChange={(event) => {
-                        setUsername(event.target.value);
-                    }}
-                />
-
-                <input 
-                    type="password" 
-                    onChange={(event) => {
-                        setPassword(event.target.value);
-                    }}
-                />
+            pseudo
+            <input 
+                type="text" 
+                onChange={(event) => {
+                    setUsername(event.target.value);
+                }}
+            />
+            mot de passe
+            <input 
+                type="password" 
+                onChange={(event) => {
+                    setPassword(event.target.value);
+                }}
+            />
                 
-
-                <button onClick={login}> Login</button>
+            <button onClick={login}> Login</button>
         </div>
     )
 }

@@ -70,30 +70,48 @@ function Accueil() {
 
   
   return (
-    <div>
-      {listOfPosts.map((value, key) => {
-        return (
-          <div key={key} className='post' > 
-            <div className='title'> {value.title} </div>
-            <div className='postText' onClick={() => {navigate(`/post/${value.id}`)}}> {value.postText} </div>
-            <div className="footer">
-              <div className="username"><Link to={`/profile/${value.UserId}`}> {value.username} </Link></div>
-              <div className="buttons">
-                <ThumbUpIcon
-                  onClick={() => {
-                    likeAPost(value.id);
-                  }}
-                  className={
-                    likedPosts.includes(value.id) ? "unlikeBttn" : "likeBttn"
-                  }
+    <div className="listofposts">
+    {listOfPosts.map((value, key) => {
+      return (
+        <div key={key} className="post">
+          <div className="title"> {value.title} </div>
+          <div
+            className="body"
+            onClick={() => {
+              navigate(`/post/${value.id}`);
+            }}
+          >
+            <div className='containerImg'>
+              {value.image !== null && (
+                <img
+                  className="thumbnail"
+                  src={`http://localhost:4000/${value.image}`}
+                  alt="img from a post"
                 />
-                <label> {value.Likes.length}</label>
-              </div>
+              )}
             </div>
           </div>
-        );
-      })}
-    </div>
+          <div className="footer">
+            <div className="username">
+              <Link to={`/profile/${value.UserId}`}> {value.username} </Link>
+            </div>
+            <div className="buttons">
+              <ThumbUpIcon
+                onClick={() => {
+                  likeAPost(value.id);
+                }}
+                className={
+                  likedPosts.includes(value.id) ? "unlikeBttn" : "likeBttn"
+                }
+              />
+
+              <label> {value.Likes.length}</label>
+            </div>
+          </div>
+        </div>
+      );
+    })}
+  </div>
   );
 }
 

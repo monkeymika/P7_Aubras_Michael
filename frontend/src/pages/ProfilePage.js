@@ -31,7 +31,22 @@ function ProfilePage() {
         return (
           <div key={key} className='post' > 
             <div className='title'> {value.title} </div>
-            <div className='postText' onClick={() => {navigate(`/post/${value.id}`)}}> {value.postText} </div>
+            
+
+            <div className='body' onClick={() => {navigate(`/post/${value.id}`)}}> 
+                {value.image ? (
+                  <img
+                    className="thumbnail"
+                    src={`http://localhost:4000/${value.image}`}
+                    alt="img from a post"
+                  />
+                ) : (
+                    ""
+                )}
+              </div>
+
+
+
             <div className="footer">
               <div className="username">{value.username}</div>
               <div className="buttons">

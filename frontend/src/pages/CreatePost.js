@@ -1,12 +1,12 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
-import {AuthContext} from "../helpers/AuthContext";
+// import {AuthContext} from "../helpers/AuthContext";
 
 function CreatePost() {
-    const {authState} = useContext(AuthContext);
+    const [image, setImage] = useState("");
 
     let navigate = useNavigate();
 
@@ -27,7 +27,16 @@ function CreatePost() {
     });
 
     const onSubmit = (data) => {
-        axios.post("http://localhost:4000/posts", data, {headers: {accessToken: localStorage.getItem('accessToken')}}).then((res) => {
+        const formData = new FormData();
+        console.log(image)
+        formData.append("image", image);
+        formData.append("title", data.title);
+        formData.append("postText", data.postText);
+
+
+
+        axios.post("http://localhost:4000/posts", formData, {headers: {accessToken: localStorage.getItem('accessToken')}})
+        .then((res) => {
             navigate("/");
         });
     };
@@ -37,13 +46,22 @@ function CreatePost() {
     <div className='createPostPage'> 
         <Formik 
             initialValues={initialValues} 
-            onSubmit={onSubmit} 
+            onSubmit={onSubmit}
+            method="POST"
+            encType="multipart/form-data" 
             validationSchema={validationSchema}
         >
-            <Form className='formContainer'>
+            <Form 
+                className='formContainer'
+                method="POST"
+                action="/postimg"
+                encType="multipart/form-data"
+            >
                 <label>Title:</label>
                 <ErrorMessage name='title' component="span"/>
-                <Field 
+                <Field
+                    type="text"
+                    autoComplete="off"
                     id="inputCreatePost" 
                     name="title" 
                     placeholder="(Ex. Title..." >       
@@ -51,12 +69,26 @@ function CreatePost() {
 
                 <label>Post:</label>
                 <ErrorMessage name='postText' component="span"/>
-                <Field 
-                    id="inputCreatePost" 
+                <Field
+                    as="textarea"
+                    autoComplete="off"
+                    className="inputCreatePost textAreaPost"
+                    id="" 
                     name="postText" 
                     placeholder="(Ex. Post..." >       
                 </Field>
-                <button type='submit'> Create Post</button>
+                <div>
+                    <label htmlFor="file"> Ajouter une image</label>
+                    <input
+                        id="file"
+                        className="btn"
+                        type="file"
+                        name="image"
+                        size="lg"
+                        onChange={(e) => setImage(e.target.files[0])}
+                    />
+                    <button type='submit'> Create Post</button>
+                </div> 
             </Form>
         </Formik> 
     </div>

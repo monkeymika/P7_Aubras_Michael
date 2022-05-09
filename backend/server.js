@@ -29,6 +29,9 @@ app.use("/comments", commentsRouter);
 app.use("/auth", usersRouter);
 app.use("/likes", likesRouter);
 
+//images
+app.use("/images", express.static("./images"));
+
 /****************************************/
 /***** Start serveur *******/
 db.sequelize.sync().then(() => {

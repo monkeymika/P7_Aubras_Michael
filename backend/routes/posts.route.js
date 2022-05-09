@@ -4,6 +4,7 @@ const express = require("express");
 const { Posts, Likes } = require("../models");
 
 const {validateToken} = require("../middlewares/auth.middleware");
+const multer = require('../middlewares/multer.middleware');
 
 /*****************************************************/
 /******** Récupération du routeur d'express *********/
@@ -30,11 +31,12 @@ router.get('/byuserId/:id', async (req, res) => {
   res.json(listOfPosts);
 });
 
-router.post("/", validateToken, async (req, res) => {
+router.post("/", validateToken, multer, async (req, res) => {
   const post = req.body;
-  post.username= req.user.username;
-  post.UserId= req.user.id;
-  await Posts.create(post);
+  post.username = req.user.username;
+  post.UserId = req.user.id;
+  post.image = req.file?.path;
+  await Posts.create(post)
   res.json(post);
 });
 
@@ -46,6 +48,8 @@ router.delete("/:postId", validateToken, async(req, res) => {
   }})
 
   res.json("Post effacer")
-})
+});
+
+
 
 module.exports = router;

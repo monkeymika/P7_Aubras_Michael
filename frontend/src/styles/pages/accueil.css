@@ -13,7 +13,7 @@ body {
 
 .post {
     width: 400px;
-    height: 300px;
+    height: 400px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -39,10 +39,11 @@ body {
     border-radius: 10px 10px 0 0;
 }
 
-.post .postText {
+.post .body {
     flex: 60%;
     display: grid;
     place-content: center;
+
 }
 
 .post .footer {
@@ -126,4 +127,26 @@ body {
     margin-right: 10px;
     color: white;
     font-weight: lighter;
+}
+
+.thumbnail {
+
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+
+
+}
+
+
+.bigImage img {
+    max-width: 100%;
+    max-height: 100%;
+
+}
+
+.containerImg {
+    width: 100%;
 }

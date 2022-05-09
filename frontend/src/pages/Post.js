@@ -61,13 +61,28 @@ function Post() {
         .then(() => {
             navigate('/');
         })
-    }
+    };
+
+
     return  (
         <div className='postPage'>
             <div className="leftSide">
                 <div className="post" id='individual'>
                     <div className="title"> {postObject.title}</div>
-                    <div className="postText"> {postObject.postText}</div>
+                    
+
+                    {" "}
+                    <div className='bigImage'>
+                        {  postObject.image !== null && (
+                        <img
+                        className="thumbnail"
+                        src={`http://localhost:4000/${postObject.image}`}
+                        alt="img from a post"
+                        />
+                        )}
+                    </div>
+
+
                     <div className="footer"> {postObject.username} 
                         {authState.username === postObject.username && <button onClick={() => {deletePost(postObject.id)}}> Effacer publication </button>}
                     </div>
