@@ -22,7 +22,7 @@ function Post() {
         axios.get(`http://localhost:4000/comments/${id}`).then((res) => {
             setComments(res.data);
         });
-    },[]);
+    },[navigate]);
 
     // fonction qui ajoute un commentaire
     const addComment = () => {
@@ -82,7 +82,7 @@ function Post() {
                         )}
                     </div>
 
-
+                    <p>{postObject.postText}</p>       
                     <div className="footer"> {postObject.username} 
                         {authState.username === postObject.username && <button onClick={() => {deletePost(postObject.id)}}> Effacer publication </button>}
                     </div>

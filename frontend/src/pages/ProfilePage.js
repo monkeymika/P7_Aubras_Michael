@@ -19,7 +19,7 @@ function ProfilePage() {
         .then((res) => {
             setListOfPosts(res.data)
         })
-    }, []);
+    }, [navigate]);
 
     
   return (

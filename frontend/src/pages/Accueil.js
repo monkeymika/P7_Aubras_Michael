@@ -1,15 +1,13 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {useNavigate} from 'react-router-dom';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import {AuthContext} from "../helpers/AuthContext";
 import {Link} from 'react-router-dom';
 
 function Accueil() {
   const [listOfPosts, setListOfPosts] = useState([]);
   const [likedPosts, setLikedPosts] = useState([]);
-  const {authState} = useContext(AuthContext);
 
   let navigate = useNavigate();
 
@@ -30,7 +28,7 @@ function Accueil() {
         );
       });
     }
-  }, []);
+  }, [navigate]);
 
   const likeAPost = (postId) => {
     axios
@@ -91,6 +89,7 @@ function Accueil() {
               )}
             </div>
           </div>
+          <p>{value.postText}</p>
           <div className="footer">
             <div className="username">
               <Link to={`/profile/${value.UserId}`}> {value.username} </Link>
