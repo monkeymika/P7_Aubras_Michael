@@ -17,6 +17,7 @@ function App() {
   const [authState, setAuthState] = useState({
     username: "", 
     id: 0, 
+    role: "",
     status: false
   });
 
@@ -33,15 +34,16 @@ function App() {
           setAuthState({ 
           username: res.data.username, 
           id: res.data.id, 
+          role: res.data.role,
           status: true
         });
       }
-    })
+    });
   }, []);
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    setAuthState({username: "", id: 0, status: false});
+    setAuthState({username: "", id: 0, role: "", status: false});
   }
 
 

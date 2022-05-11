@@ -82,7 +82,7 @@ function Accueil() {
             <div className='containerImg'>
               {value.image !== null && (
                 <img
-                  className="thumbnail"
+                  className="imagePost"
                   src={`http://localhost:4000/${value.image}`}
                   alt="img from a post"
                 />
