@@ -43,8 +43,12 @@ function App() {
 
   const logout = () => {
     localStorage.removeItem("accessToken");
-    setAuthState({username: "", id: 0, role: "", status: false});
+    setAuthState({username: "", id: 0, role: "", status: false, });
   }
+
+  const refreshPage = ()=>{
+    window.location.reload();
+ }
 
 
   return (
@@ -70,7 +74,9 @@ function App() {
             </div>
             <div className="loggedInContainer">
               <h1>{authState.username}</h1>
-              {authState.status && <button onClick={logout}> Se déconnecter</button>}
+              {authState.status && <button onClick={() => {logout(); refreshPage();}}> Se déconnecter </button> }
+              
+              
             </div>
           </div>
           

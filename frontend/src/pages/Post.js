@@ -4,11 +4,6 @@ import axios from 'axios';
 import {AuthContext} from "../helpers/AuthContext";
 
 
-const initialValues = {
-    comment: "",
-  };
-
-
 // on passe l'id du post dans la base de données 
 function Post() {
     let {id} = useParams();
@@ -18,8 +13,6 @@ function Post() {
     const {authState} = useContext(AuthContext);
 
     let navigate = useNavigate();
-
-    const adminRole = authState.role === "admin";
 
     //Requete axios pour l'id
     useEffect(() => {
@@ -90,6 +83,7 @@ function Post() {
                     <div className='postDescription'>{postObject.postText}</div>       
                     <div className="footer"> {postObject.username} 
                         {authState.username === postObject.username && <button onClick={() => {deletePost(postObject.id)}}> Effacer publication </button>}
+                        
                     </div>
                 </div>
             </div>
