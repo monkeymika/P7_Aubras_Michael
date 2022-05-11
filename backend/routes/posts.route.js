@@ -41,13 +41,25 @@ router.post("/", validateToken, multer, async (req, res) => {
 });
 
 router.delete("/:postId", validateToken, async(req, res) => {
-  const postId = req.params.postId
-  
-  await Posts.destroy({where: {
-    id: postId,
-  }})
+  const postId = req.params.postId;
 
-  res.json("Post effacer")
+  const userIdToken = req.user.id;
+  const roleToken = req.user.role;
+
+  try {
+    const post = await Posts.findByPk(postId);
+    if(post.UserId != userIdToken && roleToken != "admin") {
+      throw (" Vous n'avez pas les droits ! ")
+      
+    }  
+    await Posts.destroy({where: {
+      id: postId,
+    }})
+    res.json("Post effacer") 
+
+  } catch (error) {
+    res.json(error)
+  }
 });
 
 

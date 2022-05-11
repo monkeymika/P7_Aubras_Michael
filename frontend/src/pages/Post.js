@@ -12,18 +12,26 @@ function Post() {
     const [newComment, setNewComment]  = useState("");
     const {authState} = useContext(AuthContext);
 
+    // const adminRole = authState.role === "admin";
+    
     let navigate = useNavigate();
-
+    // console.log({admin: authState.role === 'admin', authState})
     //Requete axios pour l'id
     useEffect(() => {
+        
         axios.get(`http://localhost:4000/posts/byId/${id}`).then((res) => {
             setPostObject(res.data);
         });
-    
-        axios.get(`http://localhost:4000/comments/${id}`).then((res) => {
+        
+           axios.get(`http://localhost:4000/comments/${id}`).then((res) => {
             setComments(res.data);
         });
-    },[navigate]);
+        
+    },[]);
+
+    useEffect(() => {
+        console.log(comments)
+    }, [comments])
 
     // fonction qui ajoute un commentaire
     const addComment = () => {
@@ -35,7 +43,7 @@ function Post() {
             if (res.data.error) {
                 console.log(res.data.error)
             } else {
-                const commentToAdd = {commentBody: newComment, username: res.data.username};
+                const commentToAdd = res.data;
                 setComments([...comments, commentToAdd ]);
                 setNewComment("");
             }
@@ -44,6 +52,7 @@ function Post() {
 
     // fonction qui supprime les commentaires
     const deleteComment = (id) => {
+        console.log({commentId: id})
         axios.delete(`http://localhost:4000/comments/${id}`, {
             headers: {accessToken: localStorage.getItem('accessToken')}
         }).then(() => {
@@ -64,26 +73,24 @@ function Post() {
         })
     };
 
-
     return  (
         <div className='postPage'>
             <div className="leftSide">
                 <div className="post" id='individual'>
                     <div className="title"> {postObject.title}</div>
-                    
-
-                    {" "}
-                    {  postObject.image !== null && (
+                    {postObject.image !== null && (
                     <img
                     className="imagePost"
                     src={`http://localhost:4000/${postObject.image}`}
                     alt="img post"
-                    />
+                    />  
                     )}
                     <div className='postDescription'>{postObject.postText}</div>       
                     <div className="footer"> {postObject.username} 
-                        {authState.username === postObject.username && <button onClick={() => {deletePost(postObject.id)}}> Effacer publication </button>}
-                        
+                       {(authState.username === postObject.username) || authState.role === 'admin'
+                        ? <button onClick={() => {deletePost(postObject.id)}}>Effacer publication </button> 
+                        : ""
+                        }
                     </div>
                 </div>
             </div>
@@ -116,4 +123,4 @@ function Post() {
     );
 }
 
-export default Post
+export default Post;

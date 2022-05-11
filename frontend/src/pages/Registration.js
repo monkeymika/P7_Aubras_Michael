@@ -12,6 +12,7 @@ function Registration() {
     username:"",
     email:"",
     password:"",
+    visitor:"visitor"
   };
 
   const validationSchema = Yup.object().shape({

@@ -20,8 +20,13 @@ router.post("/", validateToken, async (req, res) => {
     const comment = req.body;
     const username = req.user.username;
     comment.username = username;
-    await Comments.create(comment);
-    res.json(comment);
+    try{
+        const postedComment = await Comments.create(req.body);
+        res.status(201).json(postedComment.toJSON());
+    }
+    catch(err){
+        res.status(400).json({message: 'echec'})
+    }
 });
 
 router.delete("/:commentId", validateToken, async(req, res) => {

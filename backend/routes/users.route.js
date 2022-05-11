@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
       if (user) {
         return res.status(409).json({
           message: 'email déja enregistré !!',
-        });
+        }); 
     }
 
     bcrypt.hash(password, 10).then((hash) => {
