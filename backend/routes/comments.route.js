@@ -30,13 +30,24 @@ router.post("/", validateToken, async (req, res) => {
 });
 
 router.delete("/:commentId", validateToken, async(req, res) => {
-    const commentId = req.params.commentId
+    const commentId = req.params.commentId;
 
-    await Comments.destroy({where: {
-        id: commentId,
-    }})
+    const userIdToken = req.user.id;
+    const roleToken = req.user.role;
 
-    res.json("commentaire effacer")
+    try {
+        const comment = await Comments.findByPk(commentId);
+        if(comment.UserId != userIdToken && roleToken != "admin") {
+            throw (" Vous n'avez pas les droits ! ")
+        }
+        await Comments.destroy({where: {
+            id: commentId,
+        }})
+        res.json("Commentaire effacer")
+
+    }  catch (error) {
+        res.json(error)
+    }
 });
 
 module.exports = router;

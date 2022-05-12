@@ -111,9 +111,10 @@ function Post() {
                             <div key={key} className="comment"> 
                                 {comment.commentBody}
                                 <label> Username: {comment.username}</label>
-                                {authState.username === comment.username && (
-                                    <button onClick={() => {deleteComment(comment.id)}}> X </button>
-                                )} 
+                                {(authState.username === comment.username) || authState.role === 'admin' 
+                                  ? <button onClick={() => {deleteComment(comment.id)}}> X </button>
+                                  : ""
+                                } 
                             </div>
                         );
                     })}
