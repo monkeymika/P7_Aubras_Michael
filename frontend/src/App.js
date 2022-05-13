@@ -1,4 +1,4 @@
-import "./styles/index.css";
+import "./styles/index.scss";
 import {BrowserRouter as Router, Route, Routes, Link} from "react-router-dom";
 import Accueil from './pages/Accueil';
 import CreatePost from './pages/CreatePost';
@@ -10,6 +10,11 @@ import Profile from './pages/ProfilePage';
 import {AuthContext} from './helpers/AuthContext';
 import {useState, useEffect}  from "react";
 import axios from "axios";
+import logo from "./logo/icon-left-font-monochrome-white.png";
+import ExitToAppTwoToneIcon from '@mui/icons-material/ExitToAppTwoTone';
+import HomeIcon from '@mui/icons-material/Home';
+import CreateIcon from '@mui/icons-material/Create';
+
 
 
 
@@ -48,14 +53,18 @@ function App() {
 
   const refreshPage = ()=>{
     window.location.href="http://localhost:3000/login";
- }
+  }
+
+  
 
 
   return (
     <div className="App">
       <AuthContext.Provider value={{authState, setAuthState }}>
+    
         <Router>
           <div className="navbar">
+           
             <div className="links">
               {/* Si "accessToken n'est pas dans le session storage,
               "signup" et "login" n'apparaissent pas sur la page d'accueil*/}
@@ -66,19 +75,23 @@ function App() {
                 </>
               ) : (
                 <>
-                  <Link to="/"> Accueil </Link>
-                  <Link to="/createpost"> Créer un post </Link>
+                  <Link to="/"> <HomeIcon fontSize=""></HomeIcon> </Link>
+                  <Link to="/createpost"> <CreateIcon fontSize=""></CreateIcon> </Link>
                 </>
               )}
 
             </div>
+              <div className="logo">
+                <img src={logo} alt="" />
+              </div>
             <div className="loggedInContainer">
               <h1>{authState.username}</h1>
-              {authState.status && <button onClick={() => {logout(); refreshPage();}}> Se déconnecter </button> }
-              
-              
+              {authState.status && <button onClick={() => {logout(); refreshPage();}}> <ExitToAppTwoToneIcon fontSize=""></ExitToAppTwoToneIcon> </button> }
             </div>
           </div>
+
+          
+          
           
           <Routes>
             <Route path="/" element={<Accueil/>} />

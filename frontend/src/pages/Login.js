@@ -24,9 +24,10 @@ function Login() {
         });
     };
   
-    return (
+    return (  
+    
         <div className="loginContainer">
-            pseudo
+             pseudo
             <input 
                 type="text" 
                 onChange={(event) => {
@@ -40,10 +41,10 @@ function Login() {
                     setPassword(event.target.value);
                 }}
             />
-                
+                    
             <button onClick={login}> Login</button>
         </div>
     )
-}
+};
 
-export default Login
+export default Login;

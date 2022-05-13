@@ -12,3 +12,15 @@
     text-decoration: none;
     font-family: 'Shrikhand', cursive;
 }
+
+
+.App {
+    background-image: url("./pages/logo/icon.png");
+    background-position: center;
+    background-size: 45%;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

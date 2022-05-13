@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import {Link} from 'react-router-dom';
 
+
 function Accueil() {
   const [listOfPosts, setListOfPosts] = useState([]);
   const [likedPosts, setLikedPosts] = useState([]);
@@ -69,8 +70,10 @@ function Accueil() {
   
   return (
     <div className="listofposts">
+      
     {listOfPosts.map((value, key) => {
       return (
+
         <div key={key} className="post">
           <div className="title"> {value.title} </div>
           <div
@@ -88,8 +91,8 @@ function Accueil() {
                 />
               )}
             </div>
+            <p>{value.postText}</p>
           </div>
-          <p>{value.postText}</p>
           <div className="footer">
             <div className="username">
               <Link to={`/profile/${value.UserId}`}> {value.username} </Link>
