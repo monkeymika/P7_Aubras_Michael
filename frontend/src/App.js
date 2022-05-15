@@ -10,7 +10,7 @@ import Profile from './pages/ProfilePage';
 import {AuthContext} from './helpers/AuthContext';
 import {useState, useEffect}  from "react";
 import axios from "axios";
-import logo from "./logo/icon-left-font-monochrome-white.png";
+import logo from "../src/styles/pages/logo/icon-left-font-monochrome-white.png";
 import ExitToAppTwoToneIcon from '@mui/icons-material/ExitToAppTwoTone';
 import HomeIcon from '@mui/icons-material/Home';
 import CreateIcon from '@mui/icons-material/Create';

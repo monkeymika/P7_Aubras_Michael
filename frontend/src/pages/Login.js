@@ -2,6 +2,9 @@ import React, {useState, useContext} from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import {AuthContext} from '../helpers/AuthContext';
+import img from '../styles/pages/logo/login.svg';
+
+
 
 function Login() {
     
@@ -25,24 +28,30 @@ function Login() {
     };
   
     return (  
-    
-        <div className="loginContainer">
-             pseudo
-            <input 
-                type="text" 
-                onChange={(event) => {
-                    setUsername(event.target.value);
-                }}
-            />
-            mot de passe
-            <input 
-                type="password" 
-                onChange={(event) => {
-                    setPassword(event.target.value);
-                }}
-            />
-                    
-            <button onClick={login}> Login</button>
+        <div className="logContainerAll">
+            <div className="loginContainer">
+                Pseudo
+                <input 
+                    type="text" 
+                    onChange={(event) => {
+                        setUsername(event.target.value);
+                    }}
+                />
+                mot de passe
+                <input 
+                    type="password" 
+                    onChange={(event) => {
+                        setPassword(event.target.value);
+                    }}
+                />
+                        
+                <button onClick={login}> Login</button>
+            </div>
+            <div className="imgLogin">
+                <img src={img} alt="" />
+            </div>
+
+
         </div>
     )
 };

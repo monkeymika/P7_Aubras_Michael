@@ -37,13 +37,17 @@ router.delete("/:commentId", validateToken, async(req, res) => {
 
     try {
         const comment = await Comments.findByPk(commentId);
-        if(comment.UserId != userIdToken && roleToken != "admin") {
+        if(comment.UserId != userIdToken && roleToken != "admin" ) {
+            console.log(roleToken);
+            console.log(userIdToken);
+            console.log(comment.UserId);
             throw (" Vous n'avez pas les droits ! ")
         }
         await Comments.destroy({where: {
             id: commentId,
         }})
         res.json("Commentaire effacer")
+        
 
     }  catch (error) {
         res.json(error)

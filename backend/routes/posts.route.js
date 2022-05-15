@@ -49,6 +49,9 @@ router.delete("/:postId", validateToken, async(req, res) => {
   try {
     const post = await Posts.findByPk(postId);
     if(post.UserId != userIdToken && roleToken != "admin") {
+      console.log(roleToken);
+      console.log(userIdToken);
+      console.log(post.UserId);
       throw (" Vous n'avez pas les droits ! ")
       
     }  

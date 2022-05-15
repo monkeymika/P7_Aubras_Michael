@@ -69,51 +69,53 @@ function Accueil() {
 
   
   return (
-    <div className="listofposts">
-      
-    {listOfPosts.map((value, key) => {
-      return (
+    <div className="background">
+      <div className="listofposts">
+        
+        {listOfPosts.map((value, key) => {
+          return (
 
-        <div key={key} className="post">
-          <div className="title"> {value.title} </div>
-          <div
-            className="body"
-            onClick={() => {
-              navigate(`/post/${value.id}`);
-            }}
-          >
-            <div className='containerImg'>
-              {value.image !== null && (
-                <img
-                  className="imagePost"
-                  src={`http://localhost:4000/${value.image}`}
-                  alt="img from a post"
-                />
-              )}
-            </div>
-            <p>{value.postText}</p>
-          </div>
-          <div className="footer">
-            <div className="username">
-              <Link to={`/profile/${value.UserId}`}> {value.username} </Link>
-            </div>
-            <div className="buttons">
-              <ThumbUpIcon
+            <div key={key} className="post">
+              <div className="title"> {value.title} </div>
+              <div
+                className="body"
                 onClick={() => {
-                  likeAPost(value.id);
+                  navigate(`/post/${value.id}`);
                 }}
-                className={
-                  likedPosts.includes(value.id) ? "unlikeBttn" : "likeBttn"
-                }
-              />
+              >
+                <div className='containerImg'>
+                  {value.image !== null && (
+                    <img
+                      className="imagePost"
+                      src={`http://localhost:4000/${value.image}`}
+                      alt="img from a post"
+                    />
+                  )}
+                </div>
+                <p>{value.postText}</p>
+              </div>
+              <div className="footer">
+                <div className="username">
+                  <Link to={`/profile/${value.UserId}`}> {value.username} </Link>
+                </div>
+                <div className="buttons">
+                  <ThumbUpIcon
+                    onClick={() => {
+                      likeAPost(value.id);
+                    }}
+                    className={
+                      likedPosts.includes(value.id) ? "unlikeBttn" : "likeBttn"
+                    }
+                  />
 
-              <label> {value.Likes.length}</label>
+                  <label> {value.Likes.length}</label>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      );
-    })}
-  </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 

@@ -1,46 +1,60 @@
-/***********************************************************/
-/********************* NAVBAR *****************************/
-
-.navbar {
-    width: 100%;
-    height: 70px;
-    background: #ff7b77;
+.registrationContainer {
     display: flex;
-    align-items: center;
+    margin: 100px;
+    gap: 7rem;
+
+    img {
+        width: 500px;
+    }
 }
 
-.navbar .links {
-    flex: 50%;
-    height: 100%;
+
+.formContainer {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+    height: auto;
+    padding: 20px;
+    border: 4px solid #ff7b77;
+    border-radius: 8px;
+    box-shadow: #636363 11px 9px 8px 0px;
+
+    &:hover {
+        box-shadow: #4f4e4e 11px 9px 8px 0px;
+        cursor: pointer;
+
+    }
+
 }
 
-.navbar .loggedInContainer {
-    flex: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.navbar a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: white;
-}
-
-.navbar button {
-    width: 100px;
+.formContainer #inputCreatePost {
     height: 40px;
-    cursor: pointer;
-    margin-right: 10px;
-    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 3px solid #ff7b77;
+    border-radius: 5px;
+    padding-left: 10px;
+
 }
 
-.navbar h1 {
-    text-align: right;
-    margin-right: 10px;
+.formContainer button {
+    margin-top: 15px;
+    height: 40px;
+    border: none;
+    background: #ffa189;
+    border-radius: 5px;
     color: white;
-    font-weight: lighter;
+    font-size: 1.5rem;
+}
+
+.formContainer button:hover {
+    cursor: pointer;
+    transition: 0.8s;
+    background: #ff3d37;
+    color: black;
+}
+
+span {
+    color: red;
 }

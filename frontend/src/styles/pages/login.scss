@@ -1,10 +1,30 @@
+.logContainerAll {
+    display: flex;
+    margin: 100px;
+    gap: 8rem;
+
+    img {
+        width: 500px;
+
+    }
+}
+
+
 .loginContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid #ff7b77;
+    border: 4px solid #ff7b77;
     border-radius: 10px;
-    margin-top: 150px;
+    background: white;
+    padding: 20px;
+    box-shadow: #636363 11px 9px 8px 0px;
+
+    &:hover {
+        box-shadow: #4f4e4e 11px 9px 8px 0px;
+        cursor: pointer;
+
+    }
 }
 
 .loginContainer input,
@@ -13,14 +33,22 @@ button {
     height: 50px;
     border-radius: 8px;
     border: none;
-    margin: 10px;
+    margin: 20px;
 }
 
 .loginContainer button {
     background-color: #ff7b77;
     color: white;
+    font-size: 1.5rem;
+
+    &:hover {
+        cursor: pointer;
+        transition: 1s;
+        background: #ff3d37;
+        color: black;
+    }
 }
 
 .loginContainer input {
-    border: 2px solid #ff7b77;
+    border: 3px solid #ff7b77;
 }

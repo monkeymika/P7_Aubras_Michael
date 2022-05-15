@@ -3,6 +3,7 @@ import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
+import img from '../styles/pages/logo/login.svg';
 
 function Registration() {
 
@@ -29,7 +30,12 @@ function Registration() {
   };
 
   return (
-    <div>
+    <div className='registrationContainer'>
+
+      <div className="imgLogin">
+        <img src={img} alt="" />
+      </div>
+
       <Formik 
         initialValues={initialValues} 
         onSubmit={onSubmit} 
@@ -45,7 +51,7 @@ function Registration() {
               placeholder="(Ex. luffy456..." >       
             </Field>
 
-            <label>email:</label>
+            <label>Email:</label>
             <ErrorMessage name='email' component="span"/>
             <Field
               autocomplete="off" 
@@ -66,7 +72,8 @@ function Registration() {
 
             <button type='submit'> S'inscrire</button>
         </Form>
-      </Formik> 
+      </Formik>
+     
     </div>)
 }
 

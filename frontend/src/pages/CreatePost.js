@@ -23,7 +23,7 @@ function CreatePost() {
 
     const validationSchema = Yup.object().shape({
         title: Yup.string().required("Le titre ne doit pas être vide"),
-        postText: Yup.string().required(),
+        postText: Yup.string().required("La description ne doit pas être vide"),
     });
 
     const onSubmit = (data) => {
@@ -57,7 +57,7 @@ function CreatePost() {
                 action="/postimg"
                 encType="multipart/form-data"
             >
-                <label>Title:</label>
+                <label>Titre du post :</label>
                 <ErrorMessage name='title' component="span"/>
                 <Field
                     type="text"
@@ -67,10 +67,9 @@ function CreatePost() {
                     placeholder="(Ex. Title..." >       
                 </Field>
 
-                <label>Post:</label>
+                <label>Description du post :</label>
                 <ErrorMessage name='postText' component="span"/>
                 <Field
-                    as="textarea"
                     autoComplete="off"
                     className="inputCreatePost textAreaPost"
                     id="" 
