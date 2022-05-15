@@ -20,8 +20,10 @@ router.post("/", validateToken, async (req, res) => {
     const comment = req.body;
     const username = req.user.username;
     comment.username = username;
+    const userIdToken = req.user.id;
+
     try{
-        const postedComment = await Comments.create(req.body);
+        const postedComment = await Comments.create({...req.body, UserId: userIdToken});
         res.status(201).json(postedComment.toJSON());
     }
     catch(err){
@@ -37,12 +39,14 @@ router.delete("/:commentId", validateToken, async(req, res) => {
 
     try {
         const comment = await Comments.findByPk(commentId);
+        console.log(commentId);
         if(comment.UserId != userIdToken && roleToken != "admin" ) {
             console.log(roleToken);
             console.log(userIdToken);
             console.log(comment.UserId);
             throw (" Vous n'avez pas les droits ! ")
         }
+        console.log({commentId});
         await Comments.destroy({where: {
             id: commentId,
         }})

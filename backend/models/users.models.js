@@ -24,10 +24,17 @@ module.exports = (sequelize, DataTypes) => {
     Users.associate = (models) => {// Mise en place des relations   
       Users.hasMany(models.Likes, {
         onDelete: "cascade",
+        foreignKey: {allowNull: false}
       });
 
       Users.hasMany(models.Posts, {
         onDelete: "cascade",
+        foreignKey: {allowNull: false}
+      });
+
+      Users.hasMany(models.Comments, {
+        onDelete: "cascade",
+        foreignKey: {allowNull: false}
       });      
     };
 

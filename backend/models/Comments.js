@@ -11,6 +11,19 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
     });
+
+    Comments.associate = (models) => {// Mise en place des relations   
+
+      Comments.belongsTo(models.Users, {
+        onDelete: "cascade",
+        foreignKey: {allowNull: false} 
+      }); 
+
+      Comments.belongsTo(models.Posts, {
+        onDelete: "cascade",
+        foreignKey: {allowNull: false}      
+      });      
+    };
   
   return Comments;
 };
