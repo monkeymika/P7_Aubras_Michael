@@ -1,11 +1,22 @@
 .background {
-    background-image: url("./logo/icon.png");
-    background-position: center;
-    background-size: 45%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+
+    @media screen and(max-width: 990px) {
+        width: 500px;
+    }
+
+    @media screen and(max-width: 590px) {
+        width: 250px;
+    }
+
 }
+
+
+
+
+
+
+
+
 
 .post {
     max-width: 900px;
@@ -53,8 +64,6 @@
 
     }
 }
-
-
 
 .post .footer {
     flex: 20%;

@@ -11,8 +11,14 @@
     border: none;
     text-decoration: none;
     font-family: 'Shrikhand', cursive;
+
 }
 
+body {
+    background-image: url("../styles/pages/logo/icon.png");
+    background-position: center;
+    background-size: 45%;
+}
 
 .App {
 

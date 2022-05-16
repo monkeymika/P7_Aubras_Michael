@@ -1,15 +1,19 @@
-/* INDIVIDUAL POST */
 .postPage {
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 100%;
-    background-image: url("./logo/icon.png");
-    background-position: center;
-    background-size: 45%;
-    width: 100%;
-    display: flex;
     justify-content: center;
+
+    @media screen and(max-width: 550px) {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+
+    }
 }
 
 .leftSide {
@@ -21,6 +25,28 @@
     .imagePost {
         width: 100%;
     }
+
+    .post,
+    .title,
+    .imagePost,
+    .postDescription,
+    .footer {
+        @media screen and(max-width: 700px) {
+            width: 200px;
+
+        }
+
+        button {
+
+            @media screen and(max-width: 320px) {
+                width: 180px;
+                font-size: 0.5rem;
+
+            }
+        }
+
+    }
+
 }
 
 
@@ -81,6 +107,7 @@ button {
     background: white;
     align-items: center;
     box-shadow: #636363 11px 9px 8px 0px;
+    gap: 1rem;
 
     &:hover {
         box-shadow: #4f4e4e 11px 9px 8px 0px;
@@ -101,6 +128,11 @@ button {
         background-color: #ff7b77;
         color: white;
 
+        @media screen and(max-width: 320px) {
+            width: 100px;
+
+        }
+
         &:hover {
             cursor: pointer;
             transition: 1s;
@@ -109,6 +141,8 @@ button {
         }
     }
 }
+
+;
 
 #individual {
     height: auto;
@@ -120,7 +154,10 @@ button {
     body {
         font-size: 30px;
     }
+
 }
+
+;
 
 #individual button {
     background-color: #ff7b77;
@@ -131,5 +168,30 @@ button {
         transition: 1s;
         background: #ff3d37;
         color: black;
+    }
+
+}
+
+
+
+.comment label {
+    border-radius: 8px;
+    padding: 0.5rem;
+    background: #ff7b77;
+}
+
+.listOfComments {
+
+    .comment label button {
+
+        @media screen and(max-width: 700px) {
+            width: 100px;
+        }
+
+        @media screen and(max-width: 320px) {
+            width: 180px;
+            font-size: 0.5rem;
+
+        }
     }
 }

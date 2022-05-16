@@ -1,3 +1,39 @@
+.profilePageContainer {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+
+    @media screen and(max-width: 778px) {
+        flex-wrap: wrap;
+
+
+    }
+
+    .info {
+        @media screen and(max-width: 778px) {
+            margin-top: 50px;
+
+        }
+    }
+
+    @media screen and(max-width: 450px) {
+        flex-wrap: wrap;
+        width: 250px;
+
+
+
+    }
+
+    .info {
+        @media screen and(max-width: 450px) {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            width: 250px;
+
+        }
+    }
+}
+
 .profilImage {
     max-width: 100%;
     max-height: 100%;
@@ -10,6 +46,16 @@
     flex-direction: column;
     align-items: center;
     font-size: 1.3rem;
+    box-shadow: #636363 11px 9px 8px 0px;
+    padding: 15px;
+    background: white;
+
+    @media screen and(max-width: 778px) {
+        width: 400px;
+        margin: 0 auto;
+
+
+    }
 }
 
 .smallBtn {
@@ -25,6 +71,13 @@
     }
 }
 
-.profilePageContainer .post {
-    padding: 10px;
+.profilePageContainer {
+    margin: 0 auto;
+}
+
+.listOfPosts {
+    @media screen and(max-width: 778px) {
+        width: 400px;
+        margin: 0 auto;
+    }
 }

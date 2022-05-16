@@ -6,6 +6,13 @@
     img {
         width: 500px;
 
+        @media screen and(max-width: 990px) {
+            width: 300px;
+        }
+
+        @media screen and(max-width: 840px) {
+            display: none;
+        }
     }
 }
 
@@ -25,6 +32,13 @@
         cursor: pointer;
 
     }
+
+    @media screen and(max-width: 840px) {
+        margin-left: 150px;
+    }
+
+
+
 }
 
 .loginContainer input,
@@ -34,6 +48,14 @@ button {
     border-radius: 8px;
     border: none;
     margin: 20px;
+
+    @media screen and(max-width: 990px) {
+        width: 300px;
+    }
+
+    @media screen and(max-width: 590px) {
+        width: 200px;
+    }
 }
 
 .loginContainer button {
@@ -51,4 +73,16 @@ button {
 
 .loginContainer input {
     border: 3px solid #ff7b77;
+}
+
+
+.navbar .links {
+
+    @media screen and(max-width: 990px) {
+        width: 500px;
+    }
+
+    @media screen and(max-width: 590px) {
+        width: 250px;
+    }
 }

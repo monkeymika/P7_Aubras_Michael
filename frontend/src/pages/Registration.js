@@ -48,7 +48,7 @@ function Registration() {
               autocomplete="off" 
               id="inputCreatePost" 
               name="username" 
-              placeholder="(Ex. luffy456..." >       
+              placeholder="Ex. luffy456..." >       
             </Field>
 
             <label>Email:</label>
@@ -57,7 +57,7 @@ function Registration() {
               autocomplete="off" 
               id="inputCreatePost"
               name="email" 
-              placeholder="(Ex. losPolosHermanos@gmail.com..." >       
+              placeholder="Ex. losPolosHermanos@gmail.com..." >       
             </Field>
 
             <label>Mot de passe:</label>
@@ -67,7 +67,7 @@ function Registration() {
               type="password" 
               id="inputCreatePost" 
               name="password" 
-              placeholder="(Ex. Votre mot de passe..." >       
+              placeholder="Ex. Votre mot de passe..." >       
             </Field>
 
             <button type='submit'> S'inscrire</button>

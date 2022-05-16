@@ -113,7 +113,7 @@ function Post() {
                                 <label> Utilisateur: {comment.username}</label>
                                 {(authState.username === comment.username) || authState.role === 'admin'
                                   ? <button onClick={() => {deleteComment(comment.id)}}> X </button>
-                                  : ""
+                                  : ""  
                                 } 
                             </div>
                         );

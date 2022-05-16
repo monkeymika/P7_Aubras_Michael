@@ -2,6 +2,16 @@
     width: 400px;
     height: 400px;
 
+    @media screen and(max-width: 770px) {
+        height: 200px;
+        width: 200px;
+    }
+
+    @media screen and(max-width: 590px) {
+        height: 100px;
+        width: 100px;
+    }
+
 }
 
 
@@ -31,6 +41,17 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
+    h1,
+    button {
+
+        @media screen and(max-width: 770px) {
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        @media screen and(max-width: 590px) {}
+    }
 }
 
 .navbar a {
@@ -38,6 +59,19 @@
     text-decoration: none;
     color: white;
     font-size: 2rem;
+
+    @media screen and(max-width: 948px) {
+        font-size: 1rem;
+        margin-left: 8px;
+    }
+
+    @media screen and(max-width: 770px) {
+        font-size: 1rem;
+    }
+
+    @media screen and(max-width: 590px) {
+        font-size: 0.8rem;
+    }
 
     &:hover {
         transform: scale(1.2);
