@@ -99,3 +99,8 @@
         transition: 0.5s;
     }
 }
+
+.listofposts {
+    display: flex;
+    flex-direction: column-reverse;
+}
