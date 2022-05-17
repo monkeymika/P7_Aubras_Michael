@@ -65,6 +65,4 @@ router.delete("/:postId", validateToken, async(req, res) => {
   }
 });
 
-
-
 module.exports = router;

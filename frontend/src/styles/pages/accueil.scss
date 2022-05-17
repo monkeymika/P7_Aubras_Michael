@@ -11,13 +11,6 @@
 }
 
 
-
-
-
-
-
-
-
 .post {
     max-width: 900px;
     border: 4px solid #ff7b77;
@@ -63,14 +56,14 @@
         border-radius: 10px;
 
     }
-}
 
-.post .footer {
-    flex: 20%;
-    display: flex;
-    align-items: center;
-    padding-left: 15px;
-    color: #ff7b77;
+    .footer {
+        flex: 20%;
+        display: flex;
+        align-items: center;
+        padding-left: 15px;
+        color: #ff7b77;
+    }
 }
 
 .footer .username {
@@ -95,4 +88,14 @@
 .buttons label {
     margin-right: 20px;
     margin-left: 10px;
+}
+
+.footer a {
+    color: #ff7b77;
+
+    &:hover {
+        font-size: 2.5rem;
+        color: #f5453f;
+        transition: 0.5s;
+    }
 }

@@ -31,8 +31,6 @@ function CreatePost() {
         formData.append("title", data.title);
         formData.append("postText", data.postText);
 
-
-
         axios.post("http://localhost:4000/posts", formData, {headers: {accessToken: localStorage.getItem('accessToken')}})
         .then((res) => {
             navigate("/");
@@ -55,6 +53,7 @@ function CreatePost() {
                 action="/postimg"
                 encType="multipart/form-data"
             >
+
                 <label>Titre du post :</label>
                 <ErrorMessage name='title' component="span"/>
                 <Field
@@ -74,8 +73,10 @@ function CreatePost() {
                     name="postText" 
                     placeholder="(Ex. Post..." >       
                 </Field>
+
                 <div>
                     <label htmlFor="file"> Ajouter une image</label>
+
                     <input
                         id="file"
                         className="btn"

@@ -73,6 +73,7 @@ function Post() {
     return  (
         <div className='postPage'>
             <div className="leftSide">
+
                 <div className="post" id='individual'>
                     <div className="title"> {postObject.title}</div>
                     {postObject.image !== null && (
@@ -90,8 +91,11 @@ function Post() {
                         }
                     </div>
                 </div>
+
             </div>
+
             <div className="rightSide">
+
                 <div className='addCommentContainer'> 
                     <input 
                         type="text" 
@@ -102,6 +106,7 @@ function Post() {
                     />
                     <button onClick={addComment}>Commenter</button>
                 </div>
+
                 <div className="listOfComments">
                     {comments.map((comment, key) => {
                         return (
@@ -116,6 +121,7 @@ function Post() {
                         );
                     })}
                 </div>
+
             </div>
         </div>
     );

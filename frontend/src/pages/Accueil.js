@@ -67,7 +67,6 @@ function Accueil() {
     });
   };
 
-  
   return (
     <div className="background">
       <div className="listofposts">
@@ -93,7 +92,7 @@ function Accueil() {
                     />
                   )}
                 </div>
-                
+
                 <p>{value.postText}</p>
               </div>
 
