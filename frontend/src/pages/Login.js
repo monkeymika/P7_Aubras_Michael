@@ -5,7 +5,6 @@ import {AuthContext} from '../helpers/AuthContext';
 import img from '../styles/pages/logo/login.svg';
 
 
-
 function Login() {
     
     const [username, setUsername] = useState("");
@@ -30,6 +29,7 @@ function Login() {
     return (  
         <div className="logContainerAll">
             <div className="loginContainer">
+
                 Pseudo
                 <input 
                     type="text" 
@@ -37,6 +37,7 @@ function Login() {
                         setUsername(event.target.value);
                     }}
                 />
+
                 mot de passe
                 <input 
                     type="password" 
@@ -47,10 +48,10 @@ function Login() {
                         
                 <button onClick={login}> Login</button>
             </div>
+
             <div className="imgLogin">
                 <img src={img} alt="" />
             </div>
-
 
         </div>
     )

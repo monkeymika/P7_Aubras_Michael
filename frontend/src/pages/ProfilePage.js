@@ -37,7 +37,7 @@ function ProfilePage() {
       .then((res) => {
           setListOfPosts(res.data)
       })
-  }, [navigate]);
+  }, [id]);
 
     
   return (

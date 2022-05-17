@@ -83,6 +83,7 @@ function Accueil() {
                   navigate(`/post/${value.id}`);
                 }}
               >
+
                 <div className='containerImg'>
                   {value.image !== null && (
                     <img
@@ -92,12 +93,15 @@ function Accueil() {
                     />
                   )}
                 </div>
+                
                 <p>{value.postText}</p>
               </div>
+
               <div className="footer">
                 <div className="username">
                   <Link to={`/profile/${value.UserId}`}> {value.username} </Link>
                 </div>
+
                 <div className="buttons">
                   <ThumbUpIcon
                     onClick={() => {

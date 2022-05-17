@@ -3,11 +3,9 @@ import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
-// import {AuthContext} from "../helpers/AuthContext";
 
 function CreatePost() {
     const [image, setImage] = useState("");
-
     let navigate = useNavigate();
 
     const initialValues = {
@@ -19,7 +17,7 @@ function CreatePost() {
         if(!localStorage.getItem("accessToken")) {
             navigate("/login");
         }
-    }, []);
+    }, [navigate]);
 
     const validationSchema = Yup.object().shape({
         title: Yup.string().required("Le titre ne doit pas être vide"),

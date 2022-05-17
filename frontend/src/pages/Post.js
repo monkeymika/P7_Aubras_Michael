@@ -11,11 +11,8 @@ function Post() {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment]  = useState("");
     const {authState} = useContext(AuthContext);
-
-    // const adminRole = authState.role === "admin";
     
     let navigate = useNavigate();
-    // console.log({admin: authState.role === 'admin', authState})
     //Requete axios pour l'id
     useEffect(() => {
         
@@ -27,7 +24,7 @@ function Post() {
             setComments(res.data);
         });
         
-    },[]);
+    },[id]);
 
     useEffect(() => {
         console.log(comments)

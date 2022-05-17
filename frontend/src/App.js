@@ -16,8 +16,6 @@ import HomeIcon from '@mui/icons-material/Home';
 import CreateIcon from '@mui/icons-material/Create';
 
 
-
-
 function App() {
   const [authState, setAuthState] = useState({
     username: "", 
@@ -44,7 +42,7 @@ function App() {
         });
       }
     });
-  }, []);
+  }, [authState]);
 
   const logout = () => {
     localStorage.removeItem("accessToken");
@@ -56,8 +54,6 @@ function App() {
   }
 
   
-
-
   return (
     <div className="App">
       <AuthContext.Provider value={{authState, setAuthState }}>
@@ -90,9 +86,6 @@ function App() {
             </div>
           </div>
 
-          
-          
-          
           <Routes>
             <Route path="/" element={<Accueil/>} />
             <Route path="/createpost" element={<CreatePost/>} />
