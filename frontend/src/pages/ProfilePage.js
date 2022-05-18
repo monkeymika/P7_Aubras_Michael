@@ -26,7 +26,6 @@ function ProfilePage() {
       });
   };
 
-
   useEffect (() => {
       axios.get(`http://localhost:4000/auth/info/${id}`)
       .then((res) => {
