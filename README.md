@@ -16,7 +16,8 @@
 ## Installation du projet 
  Voici le fichier .env qui contient les informations pour se connecter à la base de données.
  
-![2022-05-17_21h14_52](https://user-images.githubusercontent.com/91529322/168892333-8eb3b026-30c3-4767-8134-d7da895dfdd3.png)
+![2022-05-20_11h09_31](https://user-images.githubusercontent.com/91529322/169495404-a22bf788-f02d-48f3-9749-0b50b0827a4d.png)
+
 
 J'ai utilisé phpMyAdmin comme interface pour la gestion de la base de données Groupomania.
 
